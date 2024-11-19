@@ -1,0 +1,157 @@
+<20_11 html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Chúc Mừng 20/11</title>
+    <style>
+        /* Phần nền */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ffe0b3, #ffcccb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Khung thiệp */
+        .card {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            border: 2px solid #ff6f61;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.5s ease-in-out;
+            transform: scale(0.9);
+        }
+
+        .card:hover {
+            transform: scale(1);
+        }
+
+        /* Phần tiêu đề */
+        .card h1 {
+            margin-top: 20px;
+            font-size: 28px;
+            color: #ff6f61;
+            text-align: center;
+        }
+
+        /* Phần nội dung lời chúc */
+        .card p {
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        /* Bông hoa trang trí */
+        .flower {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Simple_Flower_Icon.svg/1024px-Simple_Flower_Icon.svg.png');
+            background-size: cover;
+            animation: floatAround 5s infinite ease-in-out;
+        }
+
+        @keyframes floatAround {
+            0% {
+                transform: translate(-50px, -50px) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(50px, 50px) rotate(180deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(-50px, -50px) rotate(360deg);
+                opacity: 1;
+            }
+        }
+
+        /* Trái tim bay */
+        .floating-heart {
+            position: absolute;
+            color: #ff6f61;
+            font-size: 24px;
+            animation: floatUp 5s infinite ease-in-out;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-600px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hộp thiệp -->
+    <div class="card">
+        <h1>🌟 Chúc Mừng 20/11 🌟</h1>
+        <p>Kính gửi thầy/cô kính yêu,</p>
+        <p>Nhân ngày Nhà Giáo Việt Nam, em xin gửi lời chúc sức khỏe, hạnh phúc và thành công!</p>
+        <p><i>Trân trọng, [Tên của bạn]</i></p>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Tạo trái tim bay
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.textContent = "❤️";
+            heart.className = "floating-heart";
+
+            // Vị trí ngẫu nhiên
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            // Thời gian bay ngẫu nhiên
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+
+            document.body.appendChild(heart);
+
+            // Xóa trái tim sau 5 giây
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // Tạo bông hoa bay quanh thiệp
+        function createFlower() {
+            const flower = document.createElement("div");
+            flower.className = "flower";
+
+            // Đặt vị trí ngẫu nhiên quanh thiệp
+            flower.style.top = Math.random() * 100 + "px";
+            flower.style.left = Math.random() * 400 + "px";
+
+            document.querySelector(".card").appendChild(flower);
+
+            // Xóa hoa sau 5 giây
+            setTimeout(() => {
+                flower.remove();
+            }, 5000);
+        }
+
+        // Tạo trái tim mỗi 500ms
+        setInterval(createHeart, 500);
+
+        // Tạo hoa mỗi 1000ms
+        setInterval(createFlower, 1000);
+    </script>
+</body>
+</html>
